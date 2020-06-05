@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EP.ECertificate.Presentation.Web.Models.Job>
+
+@{
+    ViewBag.Title = "List of Jobs";
+}
+
+<h2>List</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrainingReference)
+        </th>
+        <td>
+            @Html.DisplayNameFor(model => model.EmployeeIDReference)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+        </th>
+    </tr>
+
+    @foreach (var item in Model.OrderByDescending(p=>p.JobId))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeIDReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.JobId }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.JobId }) |*@
+                @Html.ActionLink("Report", "Report", new { id = item.JobId }, new { target = "_blank" })
+            </td>
+        </tr>
+    }
+
+</table>

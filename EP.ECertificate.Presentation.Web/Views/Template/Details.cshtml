@@ -1,0 +1,37 @@
+﻿@model EP.ECertificate.Presentation.Web.Models.Template
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Template</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Filename)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Filename)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+</fieldset>
+
+
+@Html.Partial("_PlaceHolderList", Model.Placeholders)
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id=Model.TemplateId }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

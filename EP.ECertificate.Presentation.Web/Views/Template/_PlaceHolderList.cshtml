@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EP.ECertificate.Presentation.Web.Models.Placeholder>
+
+<h4>Placeholders</h4>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Width)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FontFamily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FontSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FieldName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PositionY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FontFamily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FontSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlaceholderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlaceholderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlaceholderId })
+            </td>*@
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,15 @@
+﻿@model EP.ECertificate.Presentation.Web.Models.Placeholder
+<tr>
+    <td>@Html.TextBoxFor(model => model.FieldName, new { @class = "form-control" }) @ViewBag.Hello</td>
+    <td>@Html.TextBoxFor(model => model.PositionX, new { @class = "form-control" })</td>
+    <td>@Html.TextBoxFor(model => model.PositionY, new { @class = "form-control" })</td>
+    <td>@Html.TextBoxFor(model => model.Width, new { @class = "form-control" })</td>
+    <td>@Html.TextBoxFor(model => model.Height, new { @class = "form-control" })</td>
+    <td>@Html.DropDownListFor(model => model.FontFamily, (SelectList)ViewBag.FontDDL, new { @class = "form-control" })</td>
+    <td>@Html.TextBoxFor(model => model.FontSize, new { @class = "form-control" })</td>
+    <td>@Html.TextBoxFor(model => model.Color, new { @class = "form-control" })</td>
+    <td class="delete-td"><a class="btn btn-danger delete-row">X</a>
+    @Html.HiddenFor(model => model.PlaceholderId, new { @class = "form-control" })
+    </td>
+</tr>
+       

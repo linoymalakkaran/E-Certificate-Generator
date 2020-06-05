@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "_SideMenu";
+    Layout = null;
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var action = ViewContext.RouteData.Values["action"].ToString();
+
+}
+
+<p class="lead">@controller.ToUpperInvariant()</p>
+<div class="list-group">
+    @switch (controller.ToLower())
+    {
+        case "home":
+            {
+                <a href="@Url.Content("~/")" class="list-group-item">Create</a> @*active*@
+                <a href="@Url.Content("~/home/list")" class="list-group-item">List</a> @*active*@
+                break;
+            }
+        case "template":
+            {
+                <a href="@Url.Content("~/template/create" )" class="list-group-item">Create</a>
+                <a href="@Url.Content("~/template")" class="list-group-item ">List</a>
+                break;
+            }
+
+
+    }
+
+</div>

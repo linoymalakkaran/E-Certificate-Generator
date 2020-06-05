@@ -1,0 +1,57 @@
+﻿@model EP.ECertificate.Presentation.Web.Models.Job
+@{
+    ViewBag.Title = "Job";
+}
+@section featured {
+}
+<h4>Create Job</h4>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="col-md-12 well">
+        <div class="col-md-6">
+            Job Name
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(p => p.Name, new { @class = "form-control", required = "required" })
+        </div>
+        <br />
+        <br />
+        <div class="col-md-6">
+            Select Template
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownList("Template.TemplateId", (SelectList)ViewBag.Templates, "Select", new { @class = "form-control", required = "required" })
+        </div>
+        <br />
+        <br />
+        <div class="col-md-6">
+            Data File
+        </div>
+        <div class="col-md-6">
+            <input type="file" name="FileName" required accept="application/vnd.ms-excel" class="" />
+        </div>
+        <br />
+        <br />
+        <div class="col-md-6">
+            Employee ID Excel Column
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(p => p.EmployeeIDReference, new { @class = "form-control", required = "required" })
+        </div>
+        <br />
+        <br />
+        <div class="col-md-6">
+            Training Excel Column 
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(p => p.TrainingReference, new { @class = "form-control", required = "required" })
+        </div>
+        <br />
+        <br />
+        <div class="col-md-12">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </div>
+}

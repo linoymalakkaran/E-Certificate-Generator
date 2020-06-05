@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "_Error";
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> @ViewBag.Error
+    </div>
+}

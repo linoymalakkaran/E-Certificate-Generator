@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EP.ECertificate.Presentation.Web.Models.Certificate>
+
+@{
+    ViewBag.Title = "Details";
+    var job = (EP.ECertificate.Presentation.Web.Models.Job)ViewBag.Job;
+}
+
+<h2>Job Details</h2>
+
+@Html.Partial("_JobDetail", job)
+
+
+<h4>Certificates</h4>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Training)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Filename) (Click to Download)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.OrderBy(p=>p.CertificateId))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Training)
+            </td>
+            <td>
+                @Html.ActionLink(item.Filename, "DownloadCertificate", new { id = item.CertificateId }, new { target = "_blank" })
+            </td>
+
+        </tr>
+    }
+
+</table>

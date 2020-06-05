@@ -1,0 +1,107 @@
+﻿@model EP.ECertificate.Presentation.Web.Models.Template
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h4>Edit Template</h4>
+<div class="well">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.TemplateId)
+
+        <div class="col-md-6">
+            Name: @ViewBag.Hello
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", required="required" })
+            @Html.ValidationMessageFor(model => model.Name)
+
+        </div>
+        <br />
+        <br />
+        <div class="col-md-6">
+            Background Image:
+        </div>
+        <div class="col-md-6">
+            <b>@Html.DisplayFor(model => model.Filename)</b>
+            <p>Updating certificate template PDF is restricted</p>
+            @*<input type="file" name="BackgroundImage" class="" />
+            @Html.ValidationMessageFor(model => model.Filename)*@
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="col-md-6">
+            Place Holders
+        </div>
+        <div class="col-md-6">
+            <input type="button" id="btnAdd" class="btn btn-default" value="Add Placeholders" />
+        </div>
+        <br />
+        <br />
+        <br />
+        <div id="divPlaceholders" class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Field Name</td>
+                        <td>Position X</td>
+                        <td>Position Y</td>
+                        <td>Width</td>
+                        <td>Height</td>
+                        <td>Font Family</td>
+                        <td>Font Size</td>
+                        <td>Color</td>
+                        <td>Delete</td>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var placeholder in Model.Placeholders)
+                    {
+                        @Html.Partial("AddPlaceHolder", placeholder)
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-12">
+            <input type="submit" value="Update" class="btn btn-success" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+
+
+    &nbsp;
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(function () {
+            $("#btnAdd").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("AddPlaceHolder", "Template")',
+                    cache: false,
+                    success: function (html) { $("#divPlaceholders table").append(html); }
+                });
+            });
+            $("#divPlaceholders table").on("click", ".delete-row", function () {
+                $(this).parents("tr").remove();
+
+            });
+
+
+        });
+
+    </script>
+}
